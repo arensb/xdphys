@@ -25,7 +25,7 @@
 /* system.h has the priority scheduling stuff in it */
 #include <sched.h>
 #include <sys/mman.h>
-#include <asm/system.h>
+//#include <asm/system.h>
 #include <assert.h>
 #include "xbdrv.h"
 

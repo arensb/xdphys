@@ -2,7 +2,8 @@
 #define __dos_h
 
 #include <unistd.h>
-#include <asm/io.h>
+/*#include <asm/io.h>*/
+#include <sys/io.h>
 
 #define outport(port, word) 	outw((word), (port))
 #define outportb(port, byte)	outb((byte), (port))
