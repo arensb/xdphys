@@ -67,7 +67,7 @@ INCLUDES	=	-I$(TDTINC)
 # Compiler flags
 # ------------------------------------------------------------
 
-CFLAGS  = 	-Wall -c -m486 -D_GNU_SOURCE $(CDEBUG) $(OPTIMIZE)
+CFLAGS  = 	-Wall -c -D_GNU_SOURCE $(CDEBUG) $(OPTIMIZE)
 
 
 all: $(TARGETS)
