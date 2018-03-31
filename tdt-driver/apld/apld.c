@@ -4,11 +4,16 @@
 #include <string.h>
 
 
+#define	  DEBUG 1
 #define   BLOCKSIZE  30000
 
+#if !defined(DEBUG) || DEBUG == 0
 /* OBJDIR is defined by the Makefile */
 /* #define   OBJDIR "/usr/local/lib" */
-
+#else
+#  undef OBJDIR
+#  define OBJDIR "."
+#endif
 
 typedef struct
 {
@@ -49,6 +54,9 @@ int        qap1;
 
 void setaddr(long adr)
 {
+#if DEBUG == 1
+	fprintf(stderr, "setaddr(%ld)\n", adr);
+#endif
   outportb(base+0x0B,(adr >> 16) & 0xff);
   outport(base+0x00,adr);
 }
@@ -62,7 +70,7 @@ void dataout(unsigned short z[], unsigned ioport, unsigned count)
   }
 }
 
-void main(int argc, char *argv[], char *env[])
+int main(int argc, char *argv[], char *env[])
 {
   char buf[255];
   printf("\n Usage: APLD {APa} {APb}\n\n");
@@ -138,6 +146,9 @@ void main(int argc, char *argv[], char *env[])
       }
 
 	  sprintf(buf, "%s/ap.obj", OBJDIR);
+#if DEBUG == 1
+      fprintf(stderr, "Loading %s\n", buf);
+#endif
       fff=fopen(buf,"rb");
       if(!fff)
       {
@@ -195,4 +206,5 @@ void main(int argc, char *argv[], char *env[])
     }
   }
   printf("\n\n");
+  exit(0);
 }
