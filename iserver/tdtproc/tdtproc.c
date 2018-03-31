@@ -91,7 +91,7 @@
 #include <sys/time.h>
 #include <sys/resource.h>
 #include <sched.h>
-#include <asm/system.h>
+//#include <asm/system.h>
 #include <unistd.h>
 #include <getopt.h>
 #include <errno.h>
