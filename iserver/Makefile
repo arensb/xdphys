@@ -63,7 +63,7 @@ $(LIBNAME): $(ARCHLIB)
 .PHONY: $(LIBNAME)
 
 $(ARCHLIB):  $(ARCHOBJS)
-	$(LIBTOOL) $(CC) $(DEFINES) $(CFLAGS) -o $(ARCHLIB) \
+	$(LIBTOOL) --mode=link $(CC) $(DEFINES) $(CFLAGS) -o $(ARCHLIB) \
 		-rpath $(INSTALL_LIBDIR) \
 		-version-info $(INTERFACE):$(REVISION):$(AGE) \
 		$(ARCHOBJS)
@@ -139,6 +139,6 @@ iserver.lo: is-tdt.c is-drpm.c iserver.c
 # Implicit rules
 # ----------------------------------------------------------------------
 $(UNAME)/%.lo: %.c
-	$(LIBTOOL) $(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -c $< -o $@
+	$(LIBTOOL) --mode=compile $(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -c $< -o $@
 
 
