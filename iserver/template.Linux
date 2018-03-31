@@ -1,0 +1,70 @@
+# ---------------------------------------------------------------------
+# RCSID		: 	$Id: template.Linux,v 1.10 2000/12/16 20:34:37 cmalek Exp $
+# Project	:	iserver
+# Filename	:	Makefile
+# Desc		:	Makefile for iserver library
+# ---------------------------------------------------------------------
+
+# ------------------------------------------------------------
+# Useful programs
+# ------------------------------------------------------------
+CC			= gcc -Wall
+CPP			= gcc - -E -P
+LD			= gcc 
+CDEBUG		= -g
+LDEBUG		= -g
+#OPTIMIZE	= -O
+INSTALL		= install -c
+RM			= /bin/rm -f
+AR			= ar
+RANLIB		= ranlib
+AWK			= gawk
+LIBTOOL		= /usr/bin/libtool
+STRIP		= 
+#STRIP 		= -s
+
+# ------------------------------------------------------------
+# Install stuff
+# ------------------------------------------------------------
+INSTALL_ROOT = /usr/local
+INSTALL_INCDIR = $(INSTALL_ROOT)/include/iserver
+INSTALL_LIBDIR = $(INSTALL_ROOT)/lib
+INSTALL_BINDIR = $(INSTALL_ROOT)/bin
+INSTALL_MATDIR	= $(INSTALL_ROOT)/local-matlab
+
+
+MATEXT = glx
+
+# ------------------------------------------------------------
+# Include directories
+# ------------------------------------------------------------
+DAQINC      = -Itdtproc -I/usr/local/include/tdt
+
+# ------------------------------------------------------------
+# Library directories
+# ------------------------------------------------------------
+TDTLIB	     = /usr/local/lib
+NRLIB	     = /usr/local/lib
+NRVER	     = nr2_O3
+
+# ------------------------------------------------------------
+# Defines
+# ------------------------------------------------------------
+# operating system specific defines
+OS = -D__tdtproc__ 
+
+# data acquisition program to use: drpmproc or tdtproc
+DAQ_PROG = tdtproc
+
+# specify bits and type for a single sample
+WORDS	     = -Dxword=short
+
+# uncomment this to make standalone libraries, libsynth.a and libiserver.a
+# You should also do a "make clean"
+#TEST		= -D__test__
+EXTRA = 
+
+#-------------------------------------------------------------------------
+
+CFLAGS  = -Wall -m486 -D_GNU_SOURCE $(CDEBUG) $(OPTIMIZE)
+

@@ -1,0 +1,44 @@
+1.2.1:
+	tdtproc now checks the environment variable DAQ_AP2_PORT to determine
+	which port to use for apinit(); defaults to 'APa'
+1.2.2:
+	forgot to do the above for XB1init().  Now it does this.
+1.2.3:
+	made is-matlab.c delete old is_info array before inserting new one
+	fixed " characters in set_att.m
+1.2.4:
+	fixed bug in is-matlab.c:load(): was only copying part of the input
+	  waveform to the DA buffer.
+	changed is_matlab.c:get_field_int() to check if the field exists
+	  before trying to read it, so is_init will not segfault now when
+	  you pre-initialize some fields (e.g. is_init.debugflag)
+1.2.5:
+	glibc > 2.0 does something screwy with stat(), so the call to stat()
+	in is-tdt.c:file_is_executable() has been #ifdef'd out
+1.2.6:
+	in tdtproc.c, removed some extremely uneccesary calls from arm_equipment()
+	which were simply chewing up time: program_da1() and check_da_buflen().
+
+	also in tdtproc.c:arm_equipment(), fixed case in ad arming switch() 
+1.2.7:
+	changed att() in is-matlab: now only takes 1x2 array as its 
+	argument, instead of 'left' and 'right' type settings.
+1.2.8:
+	documented the is_*.m files better, fixed is_record.m
+	fixed an error message in is-tdt.c
+1.2.9:
+	iserver now uses GNU libtool to compile as a shared library on
+	both SunOS and Linux.
+1.2.10:
+	added LED code, removed sync_pulse dependency on ET1
+1.2.11:
+	Moved matlab install directory to /usr/local/local-matlab
+
+	Release 2:
+	Recompiled mex files for Matlab 6
+1.2.12:
+	Fixed tdtproc/iserver_test.c so that it actually works.
+	iserver_test is now part of the distributed package.
+	Added code to tdtproc to write DA bufs to files, both before
+		and after writing to the AP2 play buffers (DAQ_DA_DUMP and 
+		DAQ_AP2_DA_DUMP)

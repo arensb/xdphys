@@ -1,0 +1,108 @@
+
+How iserver works
+-------------------------------
+
+Two hardware sets: 
+
+	s56dsp (implemented by drpmproc) 
+		2 input channels
+		2 output channels
+
+		only supports xdphys 3 command interface
+
+	TDT (implemented by tdtproc)
+		2 (4) input channels 
+			*	tdtproc can supply 4 inputs, but can iserver interface?`
+		2 output channels
+
+		supports both xdphys and matlab
+
+-------------------------------
+iserver interface 
+-------------------------------
+
+xdphys interface:
+Three command functions: is_init, is_sample, is_shutdown
+
+matlab interface:
+Five command functions: is_init, is_load, is_sample, is_record, is_shutdown
+
+-------------------------------
+Interface functions
+-------------------------------
+External libraries should know nothing of our internal state, so they
+should use these interface functions:
+
+-------------------------------
+Common interface functions
+-------------------------------
+is_getRad(void);
+is_getRadWithArgs(double,double);
+
+is_getADnchans
+is_getADbuffer
+is_getADmslength
+is_clearInput
+
+is_getDAnchans
+is_getDAbuffer
+is_getDAmslength
+is_clearOutput
+
+is_setFcSetFn
+is_setYesNoFn
+is_setAlertFn
+is_setNotifyFn
+
+-------------------------------
+TDT only interface functions
+-------------------------------
+is_et1_enable
+is_et1_disable
+is_getSpikebuffer
+is_clearSpikes
+
+is_setAtten
+
+is_led_enable
+is_led_disable
+is_setLedDur
+is_setLedDelay
+
+-------------------------------
+s56dsp only interface functions
+-------------------------------
+isdrpm_set_ppDelays
+
+
+
+is-tdt.c:is_init:
+	int is_init(float play_fc, float rec_fc, float evt_fc, int play_dur_ms,   
+	    int rec_dur_ms);
+
+	tdtproc behavior is controlled through the five arguments to is_init.
+	tdtproc has extra functionality compared with drpmproc:
+
+		led panel control for optic tectum work
+		ET1/SD1 spike discriminator
+
+	Attenuators work differently for tdtproc than drpmproc in that
+	new attenuator settings do not take effect until just before
+	the beginning of AD/DA conversion.
+
+
+	is_init does some argument caching, I guess so that if tdtproc is
+	still running and is init is called again with the same arguments,
+	tdtproc doesn't have to be restarted.
+
+	*	typically, people don't change fc or epoch, so is this even an
+		issue?
+	*	xdphys stops and restarts dprmproc for each trial, so I am guessing
+		that this is not really used by xdphys
+	*	the iserver matlab interface tends to leave tdtproc running for the
+		entire experiment
+
+	if evt_fc > 0
+		collect spikes with SD1/ET1
+	else
+		don't collect spikes

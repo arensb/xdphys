@@ -1,0 +1,72 @@
+# ---------------------------------------------------------------------
+# RCSID		: 	$Id: template.SunOS,v 1.5 1999/06/04 23:50:42 cmalek Exp $
+# Project	:	iserver
+# Filename	:	Makefile
+# Desc		:	Makefile for iserver library
+# ---------------------------------------------------------------------
+
+# ------------------------------------------------------------
+# Useful programs
+# ------------------------------------------------------------
+CC			= gcc -Wall
+CPP			= gcc - -E -P
+LD			= gcc 
+CDEBUG		= -g
+LDEBUG		= -g
+INSTALL		= install -c
+RM			= /bin/rm -f
+AR			= ar
+RANLIB		= ranlib
+AWK			= gawk
+STRIP		= 
+LIBTOOL		= /usr/local/bin/libtool
+#STRIP 		= -s
+
+# ------------------------------------------------------------
+# Install stuff
+# ------------------------------------------------------------
+INSTALL_ROOT = /usr/local
+INSTALL_INCDIR = $(INSTALL_ROOT)/include/iserver
+INSTALL_LIBDIR = $(INSTALL_ROOT)/lib
+INSTALL_BINDIR = $(INSTALL_ROOT)/bin
+INSTALL_MATDIR	= $(INSTALL_ROOT)/matlab5/toolbox/local
+RPMDIR	= /usr/local/Archives/dist/RPMS
+SRPMDIR	= /usr/local/Archives/dist/SRPMS
+
+S56DSP      = /usr/local/src/BCE/s56dsp.01-Sep-93
+
+MATEXT      = 4
+
+# ------------------------------------------------------------
+# Include directories
+# ------------------------------------------------------------
+DAQINC      = -Idrpmproc -I$(S56DSP)/include
+
+# ------------------------------------------------------------
+# Library directories
+# ------------------------------------------------------------
+DRPLIB	     = $(S56DSP)/lib
+NRLIB	     = /usr/local/lib
+NRVER	     = nr2_O3
+
+# ------------------------------------------------------------
+# Defines
+# ------------------------------------------------------------
+# operating system specific defines
+OS = -D__drpmproc__
+
+# data acquisition program to use: drpmproc or tdtproc
+DAQ_PROG = drpmproc
+
+# specify bits and type for a single sample
+WORDS	     = -Dxword=short
+
+# uncomment this to make standalone libraries, libsynth.a and libiserver.a
+# You should also do a "make clean"
+#TEST		= -D__test__
+EXTRA = 
+
+
+#-------------------------------------------------------------------------
+CFLAGS  = -Wall -D_GNU_SOURCE_ $(CDEBUG) 
+
