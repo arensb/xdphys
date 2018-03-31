@@ -1,0 +1,60 @@
+.TH APLD 1
+.SH NAME
+apld \- initialize the AP2 Array Processor Board
+.SH SYNOPSIS
+.B apld a
+\||\|
+.B b
+.SH DESCRIPTION
+.PP
+.I apld
+loads initialization code to the the AP2 Array Processor board.
+
+If you have an AP2,
+.I apld 
+must be run before 
+.BR xbcomini (1)
+and 
+.BR xbsysid (2).
+.SH OPTIONS
+.B a
+.RS
+Use this if you installed your AP2 with jumper JP1 set to option A (board uses ports 220-238H)
+.RE
+.B a
+.RS
+Use this if JP1 was set to option B (board uses ports 240-250H).
+.RE
+.SH FILES
+.I /usr/local/lib/ap.obj
+.RS
+AP2 initialization code.
+.RE
+.SH ENVIRONMENT
+None.
+.SH DIAGNOSTICS
+QAP Program File ap.obj not found!!!
+.RS
+.I apld
+could not read ap.obj: check to see that the file exists, and that
+it is readable.
+.RE
+APOS onboard code file corrupted!!!
+.RS
+ap.obj is corrupted.  Reinstall the tdt driver package.
+.RE
+Array Processor not responding after code loading!!!
+.RS
+The AP2 initialization code was loaded successfully, but the AP2
+failed to respond to tests.
+.SH BUGS
+None. (Yeah, sure.)
+.SH AUTHOR
+Tucker Davis Technologies, Inc.  <quikki@tdt-quikki.com> 
+Adapted to Linux by Chris Malek <cmalek@etho.caltech.edu>
+.SH "SEE ALSO"
+.BR xbidchck (1),
+.BR xbsysid (1),
+.BR xbcomini (1),
+
+

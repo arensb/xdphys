@@ -1,0 +1,66 @@
+.TH XBSYSID 1
+.SH NAME
+xbsysid \- assign ID numbers to Tucker Davis XB1 racks
+.SH SYNOPSIS
+.B xbsysid 
+.B com1
+\||\|
+.B com2
+\||\|
+.B com3
+\||\|
+.B com4
+\||\|
+.B apa
+\||\|
+.B apb
+.SH DESCRIPTION
+.PP
+Before you can access a device in one of the XB1 racks in your system, it
+must be given a unique XBUS location number; this is an number that 
+software will use to identify that device.  
+.I xbsysid 
+performs the assignment of these unique IDs to each device in your system.
+.PP
+Before running 
+.I xbysid,
+you must run 
+.BR xbcomini (1) 
+to set the communications baud rate for the system XBUS.  If you are using
+an AP2 Array Processor board, you should run 
+.BR apld (1) 
+before
+.B xbcomini.
+.PP
+ID the racks with the greatest number of programmable devices (for example,
+TG6 Timing Generators, PA4 programmable Attenuators, SD1 spike discriminators)
+first, and racks with fewer or no programmable devices (such as MA2 Mic
+Amplifiers or HB6 Headphone Buffers) later or last.
+.PP
+The required argument to 
+.I xbsysid
+is the port through which to communicate with the XBUS. "com1" through
+"com4" refer to the physical ports COM1 through COM4.  Use "apa" if you
+have an AP2 Array Processor board installed with jumper JP1 set to 
+option A (board uses ports 220-238H), and "apb" if JP1 was set to 
+option B (board uses ports 240-250H).
+.SH OPTIONS
+None.
+.SH FILES
+None.
+.SH ENVIRONMENT
+None.
+.SH DIAGNOSTICS
+None.
+.SH BUGS
+Should be made to detect which port to use via the environment
+variable XBCOM, like the other utilities.
+.SH AUTHOR
+Tucker Davis Technologies, Inc.  <quikki@tdt-quikki.com> 
+Adapted to Linux by Chris Malek <cmalek@etho.caltech.edu>
+.SH "SEE ALSO"
+.BR xbcomini (1),
+.BR xbidchck (1),
+.BR apld (1),
+
+

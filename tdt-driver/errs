@@ -1,0 +1,29 @@
+for dir in lib apld utils examples include man ; do \
+		(cd $dir; make -e all) \
+	done;
+make[1]: Entering directory `/home/arensb/proj/xdphys/src/tdt-driver/lib'
+gcc  -Wall -c -m486 -D_GNU_SOURCE  -O3 -DCOMP32 -DINTMOVE -DNCURSES  -I../include -c apos.c -o apos.o
+cc1: error: unrecognized command line option "-m486"
+make[1]: *** [apos.o] Error 1
+make[1]: Leaving directory `/home/arensb/proj/xdphys/src/tdt-driver/lib'
+make[1]: Entering directory `/home/arensb/proj/xdphys/src/tdt-driver/apld'
+gcc  -Wall -c -m486 -D_GNU_SOURCE  -O2 -DCOMP32 -DINTMOVE -DNCURSES -DOBJDIR="\"/usr/local/lib\"" -I../include apld.c
+cc1: error: unrecognized command line option "-m486"
+make[1]: *** [apld.o] Error 1
+make[1]: Leaving directory `/home/arensb/proj/xdphys/src/tdt-driver/apld'
+make[1]: Entering directory `/home/arensb/proj/xdphys/src/tdt-driver/utils'
+gcc  -Wall -c -m486 -D_GNU_SOURCE  -O2  -DLINUX -DCOMP32 -DINTMOVE -DNCURSES -I../include xbidchck.c
+cc1: error: unrecognized command line option "-m486"
+make[1]: *** [xbidchck.o] Error 1
+make[1]: Leaving directory `/home/arensb/proj/xdphys/src/tdt-driver/utils'
+make[1]: Entering directory `/home/arensb/proj/xdphys/src/tdt-driver/examples'
+gcc  -Wall -c -m486 -D_GNU_SOURCE -g   -DCOMP32 -DINTMOVE -DNCURSES -I../include tonetest.c
+cc1: error: unrecognized command line option "-m486"
+make[1]: *** [tonetest.o] Error 1
+make[1]: Leaving directory `/home/arensb/proj/xdphys/src/tdt-driver/examples'
+make[1]: Entering directory `/home/arensb/proj/xdphys/src/tdt-driver/include'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/home/arensb/proj/xdphys/src/tdt-driver/include'
+make[1]: Entering directory `/home/arensb/proj/xdphys/src/tdt-driver/man'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/home/arensb/proj/xdphys/src/tdt-driver/man'

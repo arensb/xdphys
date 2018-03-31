@@ -1,0 +1,5 @@
+#ifdef out unused devices in xbdrv.c.
+
+Remove curses dependencies.
+
+Do the examples actually work?

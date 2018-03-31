@@ -1,0 +1,25 @@
+
+             Installing the tdt-driver package
+			 ---------------------------------
+
+(a) make
+
+As root:
+
+(b) make install
+
+You can change the install directories in the top level Makefile 
+(INSTALL_LIBDIR, INSTALL_BINDIR, INSTALL_INCDIR).
+
+Simple, huh?
+
+Notes:
+
+	There are some example programs in the examples directory.  Read
+	the README file: it contains is important information on 
+	initializing the communications link between the TDT stuff and 
+	your computer.
+
+	There are man pages for all of the utility programs: apld, xbcomini,
+	xbidchck and xbsysid. 
+	

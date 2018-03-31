@@ -1,0 +1,148 @@
+$Id: README,v 1.2 1997/06/26 17:05:30 cmalek Exp $
+
+To get the TDT equipment to work, you must first do the following things:
+
+	(1) Load ap.obj into the AP2
+
+			apld a  <or>  apld b
+
+		Use "apld a" if you installed your AP2 card at port 220 (the 
+		default port, "Option A")
+
+	(2) Set the communications baud rate of the XB1 bus:
+
+		(a) Use a paperclip or something similar to press the ID button
+			on each of the XB1 racks.  Keep pressing the ID button until
+			the red "Activity" light stays on for that rack.
+		(b) Run
+
+				xbcomini
+
+			The "Activity" lights for all racks should go out when you do
+			this.
+
+	(3) ID the racks:
+
+		(a) Run
+
+				xbsysid
+
+			xbsysid will tell you what to do.
+
+
+
+
+            Contents of the TDT driver examples directory
+            ---------------------------------------------
+
+tonetest:
+
+	Uses:  AP2, DD1
+
+	Simple one channel playback with the DD1.  A tone is synthesized on
+	the AP2 array processor, and played from D/A output 1 of the DD1.
+
+dualtone:
+
+	Uses:  AP2, DD1
+
+	Two channel playback with the DD1.  A tone is synthesized on
+	the AP2 array processor, and simultaneously played from both D/A 
+	outputs 1 and 2 of the DD1.
+
+rectest:
+
+	Uses:  AP2, DD1
+
+	One channel recording with the DD1.  Records data from A/D input 1,
+	and plots it.  This example requires a signal generator, as input
+	for A/D input 1.
+
+dualrec:
+
+	Uses:  AP2, DD1
+
+	Two channel recording with the DD1.  Records data from A/D inputs 1
+	and 2 simultaneously, and plots the recorded data.  This example 
+	requires one or two signal generators, as inputs for A/D inputs 1 and 2.
+
+playrec:
+
+	Uses:  AP2, DD1
+
+	Simultaneous play/record with one D/A channel and one A/D channel.
+	Records from A/D input 1, and plays from D/A output 1.  Plots
+	recorded data.  This example requires either a signal generator as input 
+	for A/D input 1, or that D/A output 1 be connected to A/D input 1.
+
+dualplayrec:
+
+	Uses:  AP2, DD1
+
+	Simultaneous play/record with both D/A channels and both A/D channels.  
+	Records from A/D inputs 1 and 2, and plays from D/A outputs 1 and 2. 
+	Plots recorded data.  This example requires either a signal generator or 
+	two as inputs for A/D inputs 1 and 2, or that D/A outputs 1 and 2 be 
+	connected to A/D inputs 1 and 2.
+
+tg6test:
+
+	Uses:  AP2, DD1, TG6
+
+	Same as dualplayrec, above, except that instead of using a software 
+	trigger (i.e. DD1go(1);) to start D/A - A/D conversion, we set up
+	the TG6 to send a trigger pulse to start conversion.  To get this 
+	to example to work, connect TG6 output 1 to the TRIG input of the DD1.
+
+
+tg6att:
+
+	Uses:  AP2, DD1, TG6, 2 PA4's
+
+	Same as tg6test, above, except that we have added some PA4's, to 
+	attenuate the DD1 outputs.  For this example program, connect your
+	setup as follows:
+
+			DD1 D/A output 1 -> IN of PA4 #1
+			DD1 D/A output 2 -> IN of PA4 #2
+			OUT of PA4 #1 -> DD1 A/D input 1
+			OUT of PA4 #2 -> DD1 A/D input 2
+			TG6 output 1 -> TRIG input of DD1
+
+sd1test:
+
+	Uses:  ET1, SD1, DD1, TG6
+
+    For a test signal for input to the SD1, use a 1 KHz, +/-5V sine wave, 
+	and set the hoops for the SD1 as follows:
+
+         Hoop #1: Slope: RISE
+                  Upper: 1.0
+         Hoop #2: Slope: PEAK
+                  Delay: 0.13
+                  Width: 0.151
+                  Upper: 6.0
+                  Lower: 4.0
+  
+    Connect your setup as follows:
+  
+            TG6 output 1 -> middle input of ET1
+            TG6 output 2 -> DD1 "Trig" input
+            Signal Generator output -> SD1 "Input" input
+            Signal Generator output -> DD1 A/D input 1
+            ET1 In-1 -> SD1 "First" input
+            ET1 In-2 -> SD1 "Last" input
+
+setpriority:
+
+	A utility which can set real time scheduling priorities and policies
+	for a process.  Must be run as root.
+
+rt-demo:
+
+	A program which demonstrates the real time scheduling capabilities 
+	and memory locking capabilities of the 2.x Linux kernels.  To use it, 
+	set the scheduler for the shell you're in to SCHED_FIFO, and the
+	priority to 99, with setpriority (We do this so that if something
+	goes wrong with rt-demo, it doesn't lock up your computer).  Then run 
+	rt-demo.  

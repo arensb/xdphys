@@ -1,0 +1,86 @@
+.TH XBCOMINI 1
+.SH NAME
+xbcomini \- set communication baud rate for Tucker Davis XBUS devices
+.SH SYNOPSIS
+.B xbcomini 
+[
+.I ioport
+]
+[
+.I baudrate
+]
+.SH DESCRIPTION
+.PP
+.I xbcomini 
+initializes the communications baud rate and protocol
+of both the Tucker Davis XBUS devices and the port on your computer 
+through which you will communicate with the XBUS.  
+
+.I xbcomini 
+must be run each time you turn on your computer.
+
+Perform the following steps, in order, to successfully use 
+.I xbcomini:
+.TP
+.B 1.
+Push the "ID" button on each XB1 rack for three seconds until the amber
+ACTIVITY LED stops blinking and remains lit.
+.TP
+.B 2.
+Run
+.I xbcomini.  
+The ACTIVITY LED on each XB1 rack will go off, and all 
+devices will be reset to the specified baud rate.
+
+.SH OPTIONS
+.I ioport
+.RS
+This is the port through which your computer 
+communicates with the XBUS,  and must be one of "com1", "com2", com3", "com4",
+"apa" or "apb".
+
+"com1" through "com4" refer to the physical ports COM1 through COM4.  Use "apa" if you
+have an AP2 Array Processor board installed with jumper JP1 set to 
+option A (board uses ports 220-238H), and "apb" if JP1 was set to 
+option B (board uses ports 240-250H).
+
+If this parameter is not supplied, 
+.I xbcomini 
+reads the environment variable XBCOM, if set
+to determine how to communicate with the XBUS.
+
+.RE
+
+.I baudrate
+.RS
+If this parameter is not supplied, 
+.I xbcomini 
+will initialize the baud rate to 38400 baud, and the protocol to 
+1 start bit, 8 data bits, 1 stop bit.  
+
+If the 
+.I baudrate
+parameter is supplied, it must be one of 1200, 2400, 4800, 9600, 19200
+or 38400.
+.RE
+.SH FILES
+None.
+.SH ENVIRONMENT
+.B XBCOM
+.RS
+This can be set to the communcation channel to use to communicate with 
+the XBUS. It must be one of "com1", "com2", com3", "com4",
+"apa" or "apb".
+.SH DIAGNOSTICS
+None.
+.SH BUGS
+None. (Yeah, sure.)
+.SH AUTHOR
+Tucker Davis Technologies, Inc.  <quikki@tdt-quikki.com> 
+Adapted to Linux by Chris Malek <cmalek@etho.caltech.edu>
+.SH "SEE ALSO"
+.BR xbsysid (1),
+.BR xbidchck (1),
+.BR apld (1),
+
+

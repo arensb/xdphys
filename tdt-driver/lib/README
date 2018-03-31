@@ -1,0 +1,66 @@
+
+
+                         About XBDRV under Linux
+				         -----------------------
+
+
+Some XB1 devices (excluding the A/D and D/A converters, DD1, AD1 and
+DA1) require multi-byte data transfers sometimes: the XB1 caddy, the ET1
+event timer, the PI2 something-or-other, and the SD1 spike discriminator.
+When you place a request for multi-byte data to one of the aforementioned
+devices, the device sends the bytes, one at a time (of course, since the
+port is only 8 bits), and, most importantly, one right after the other.
+None of the devices waits for the XB1 driver to send an ACK after reciept
+of a byte, but instead, demands that the driver poll the port as fast
+as it can, reading the bytes as they become available on the port.
+
+Now, if the driver polls the port slowly, or the computer services
+an interrupt while the driver is waiting for data from the device, the
+driver may miss a byte.  That's bad.  When the driver realizes that
+it missed a byte (it will time out), the default action is to exit 
+your program with an error:
+
+	XBUS Error:    Rack(1),  Position(1)
+	    ET1read32
+	    Device not resp. after SLAVE_ACK.
+
+or something like that.  You can adapt XBDRV ignore missed bytes, but 
+at the very least you've lost that piece of data. 
+
+This problem is not hard to avoid under MS-DOS.  Your program is the only 
+process running: as long as you have something faster than a Commodore 64, 
+you can probably poll the port fast enough.  And you can disable the 
+hardware interrupts with disable() before you start receiving bytes 
+from the device.  The DOS function disable() disables hardware interrupts, 
+and enable() enables them.  
+
+Under Linux, it's a whole different ballgame.  
+
+--------------------------------------------------
+Linux specific problems
+--------------------------------------------------
+
+Since Linux is a multitasking system, we have to worry about context 
+switches (we'll be switched out for a minimum of 20ms, I think) while 
+we're polling the port.
+
+Luckily, the 2.x versions of the Linux kernel, and some of the later
+1.3.x kernels, are at least partially POSIX.1b compliant, which, for
+us, means that there is some support for real-time process priority
+scheduling via the sched_getscheduler()/sched_setscheduler() system
+calls, which is what I utilized to make the ET1read32() and ET1read16()
+function more robust.
+
+Having the computer service interrupts while the your process is polling
+the port is still a problem under Linux, but it's a bigger problem
+than under DOS because only the kernel can enable/disable interrupts.
+Since our processes run in user space, a kernel module is needed to deal
+with the interrupts.
+
+--------------------------------------------------
+Changes made to XBDRV for "safe" use under Linux
+--------------------------------------------------
+
+ET1read32() and ET1read16() seem to be the only functions that need
+to read multi-byte values via the XBUS.
+

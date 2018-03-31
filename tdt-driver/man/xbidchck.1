@@ -1,0 +1,68 @@
+.TH XBIDCHCK 1
+.SH NAME
+xbidchck \- detect and display Tucker Davis XBUS devices
+.SH SYNOPSIS
+.B xbidchck 
+.I ioport
+[
+.B v
+]
+.SH DESCRIPTION
+.PP
+.I xbidchck
+shows a diagram of detected XBUS racks, complete with devices.
+
+Each row of text in the diagram displays an XB1 rack number, with
+four columns corresponding to the four positions in an XB1 rack.
+Non-programmable devices, as well as those racks without programmable
+devices, will not be shown in this diagram.
+
+.I xbidchck
+does a search of each XB1 rack in your system, looking for programmable
+devices, such as PA4 Programmable Attenuators, or SD1 Spike Discriminators.
+The starts with the rack with the lowest ID number (see 
+.BR xbsysid (1)
+), and proceeds through the racks with increasing ID numbers until 
+one with no programmable devices is encountered.
+.PP
+Before you can use 
+.I xbidchck,
+you must set the communications baud rate with 
+.BR xbcomini (1),
+and the rack ID's with 
+.B xbsysid.
+.SH OPTIONS
+.I ioport
+.RS
+This parameter is required. It is the port through which your computer 
+communicates with the XBUS, and must be one of "com1", "com2", com3", "com4",
+"apa" or "apb".
+
+"com1" through "com4" refer to the physical ports COM1 through COM4.  Use "apa" if you
+have an AP2 Array Processor board installed with jumper JP1 set to 
+option A (board uses ports 220-238H), and "apb" if JP1 was set to 
+option B (board uses ports 240-250H).
+.RE
+.I v
+.RS
+Give microcode version information for each device.
+.RE
+
+.SH FILES
+None.
+.SH ENVIRONMENT
+None.
+.SH DIAGNOSTICS
+None.
+.SH BUGS
+Should be made to detect which port to use via the environment
+variable XBCOM, like the other utilities.
+.SH AUTHOR
+Tucker Davis Technologies, Inc.  <quikki@tdt-quikki.com> 
+Adapted to Linux by Chris Malek <cmalek@etho.caltech.edu>
+.SH "SEE ALSO"
+.BR xbsysid (1),
+.BR xbcomini (1),
+.BR apld (1),
+
+
