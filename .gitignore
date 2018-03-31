@@ -1,0 +1,15 @@
+errs
+errs.*
+*.bak
+*.o
+/tdt-driver/apld/apld
+/tdt-driver/examples/dualplayrec
+/tdt-driver/examples/dualrec
+/tdt-driver/examples/dualtone
+/tdt-driver/examples/rectest
+/tdt-driver/examples/tg6test
+/tdt-driver/examples/tonetest
+/tdt-driver/lib/libtdt.a
+/tdt-driver/utils/xbcomini
+/tdt-driver/utils/xbidchck
+
