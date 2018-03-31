@@ -20,7 +20,8 @@
 
 #include "xbdrv.h"
 
-void main(int argc, char *argv[])
+int
+main(int argc, char *argv[])
 {
 	int i,j,rn,pn,xbl;
 
