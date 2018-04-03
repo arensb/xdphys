@@ -38,12 +38,12 @@ extern int is_attSize;
 extern unsigned long *is_spikeBuffer;
 extern int is_spikeSize;
 extern int is_useET1;
-#endif __tdtproc__
+#endif /* __tdtproc__ */
 
 extern FCSETFN is_fcSetFn;
 extern MSGFN is_alert;
 extern MSGFN is_notify;
 
-#endif _ISERVERINT_H_
+#endif /* _ISERVERINT_H_ */
 
 

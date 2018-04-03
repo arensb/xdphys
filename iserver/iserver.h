@@ -134,6 +134,6 @@ void is_setUseAtten(int);
 int	is_getUseAtten(void);
 void is_setUseEq(int);
 int	is_getUseEq(void);
-#endif /* __test__ */;
+#endif /* __test__ */
 
 #endif /* _ISERVER_H_ */

@@ -338,34 +338,42 @@ static void check_parent(int sig)
 
 		if (da_shmid >= 0) {
 			if (shmctl(da_shmid, IPC_RMID, NULL) != -1)
+			{
 				DEBUG(stderr, "  tdtproc: IPC_RMID'd floating da_shm seg\n");
-			else 
+			} else  {
 				syslog(LOG_ERR, "unable to remove play shmem: %m");
+			}
 		}
 
 		if (ad_shmid >= 0) {
 			if (shmctl(ad_shmid, IPC_RMID, NULL) != -1)
+			{
 				DEBUG(stderr, "  tdtproc: IPC_RMID'd floating ad_shm seg\n");
-			else 
+			} else {
 				syslog(LOG_ERR, "unable to remove rec shmem: %m");
+			}
 		}
 
 		if (control_shmid >= 0) {
 			if (shmctl(control_shmid, IPC_RMID, NULL) != -1)
+			{
 				DEBUG(stderr, 
 					"  tdtproc: IPC_RMID'd floating control_shm seg\n");
-			else 
+			} else {
 				syslog(LOG_ERR, "unable to remove control_shm shmem: %m");
+			}
 			}
 
 		if (tdt_devices.et1) {
 			if (use_et1) {
 				if (et1_shmid >= 0) {
 					if (shmctl(et1_shmid, IPC_RMID, NULL) != -1)
+					{
 						DEBUG(stderr, 
 							"  tdtproc: IPC_RMID'd floating et1_shm seg\n");
-					else 
+					} else {
 						syslog(LOG_ERR, "unable to remove et1 shmem: %m");
+					}
 				}
 			}
 		}
