@@ -8,6 +8,7 @@ include ./template.$(UNAME)
 # Desc      :   Makefile for iserver library
 # ---------------------------------------------------------------------
 
+TOP:=	$(shell `pwd`)
 DIR:=	$(shell basename `pwd`)
 
 VERSION = 1.2.12

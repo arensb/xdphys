@@ -38,7 +38,7 @@ MATEXT = glx
 # ------------------------------------------------------------
 # Include directories
 # ------------------------------------------------------------
-DAQINC      = -Itdtproc -I/usr/local/include/tdt
+DAQINC      = -I$(TOP)/tdtproc -I/usr/local/include/tdt
 
 # ------------------------------------------------------------
 # Library directories
