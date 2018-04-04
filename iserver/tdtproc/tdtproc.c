@@ -76,6 +76,13 @@
 **
 */
 
+#define TDT_DEBUG 3		/* Debugging level in the code itself */
+#define TRACE(level, ...)	\
+	if (TDT_DEBUG >= level) \
+	{ \
+		syslog(LOG_USER|LOG_DEBUG, __VA_ARGS__); \
+	}
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/fcntl.h>
@@ -281,6 +288,7 @@ int main(int ac, char **av)
 
 
 #ifdef DO_CHDIR
+	TRACE(1, "chdir /tmp");
 	/*  cd to /tmp: this little safety feature is to allow core
 	 *  dumps (god forbid) and other files not to collide with
 	 *  the main application's crashes!
@@ -301,10 +309,12 @@ int main(int ac, char **av)
 
 	assert(tdt_inited == 1);
 
+	TRACE(1, "My pid is %d", getpid());
 	printf("%d\n", getpid());	/* tell parent my pid */
 	fflush(stdout);
 
 	/* tell our actual sampling frequency */
+	TRACE(1, "Sampling frequency: %d", (int) (fc_actual+0.5));
 	printf("%d\n", (int) (fc_actual+0.5));	
 	fflush(stdout);
 
@@ -329,6 +339,7 @@ int main(int ac, char **av)
 
 static void check_parent(int sig)
 {
+	TRACE(2, "Inside check_parent(%d)", sig);
 
 	if (kill(parent_pid, 0) != 0) {
 
@@ -396,9 +407,11 @@ static void check_parent(int sig)
 
 void sigusr1_handler(int sig)
 {
+	TRACE(1, "received play signal %d", sig);
 	DEBUG(stderr, "  tdtproc: received play signal...\n");
 	fflush(stderr);
 
+	TRACE(1, "recieved play signal: %f", timestamp());
 	TIMESTAMP(stderr, "tdtproc: recieved play signal: %f\n", timestamp());
 	if (load_flag != 1 && load_flag != 1)
 		play_flag = 1;
@@ -418,6 +431,7 @@ void sigusr1_handler(int sig)
 
 void sigusr2_handler(int sig)
 {
+	TRACE(2, "received rec signal...");
 	DEBUG(stderr, "  tdtproc: received rec signal...\n");
 	fflush(stderr);
 
@@ -1571,11 +1585,13 @@ static int is_locked(void)
 	FILE *fp;
 	int pid;
 
+	TRACE(2, "Inside is_locked()");
 	if (stat(TDTLOCK, &buf) == 0) {
 		syslog(LOG_WARNING, "lockfile exists!");
 		/* lock file exists, try to see if process is still around.. */
 		if ((fp = fopen(TDTLOCK, "r")) == NULL) {
 			/* can't open lock, assume it's locked */
+			TRACE(2, "can't open lock, assume it's locked");
 			return(-1);
 		} else {
 			if (fscanf(fp, "%d", &pid) != 1) {
@@ -1586,6 +1602,7 @@ static int is_locked(void)
 			}
 		}
 
+		TRACE(3, "Read lock file. pid == %d", pid);
 		if (kill(pid, 0) != 0) {
 			/* proc no longer exists, so lock is invalid */
 			fclose(fp);
@@ -1602,6 +1619,7 @@ static int is_locked(void)
 		}
 	} else {
 		/* no lock file at all, so it's available */
+		TRACE(2, "No lock file, so it's available");
 		return(0);
 	}
 }
@@ -2008,7 +2026,7 @@ static void lock_tdtproc(void)
 static void clean_exit(
 	int 	exit_code)
 {
-
+	TRACE(1, "Inside clean_exit(%d)", exit_code);
 	detach_from_equip();
 
 	if (dabuf != NULL)
