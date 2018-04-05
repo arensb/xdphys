@@ -56,6 +56,8 @@ LIBC6RPMDIR	= /usr/local/Archives/dist/RPMS/libc6
 LIBC5RPMDIR	= /usr/local/Archives/dist/RPMS/libc5
 SRPMDIR	= /usr/local/Archives/dist/SRPMS
 
+MAKEVARS +=	"INSTALL_ROOT=$(INSTALL_ROOT)"
+
 SUBDIRS	=		lib \
 				apld \
 				utils \
@@ -65,24 +67,24 @@ SUBDIRS	=		lib \
 
 all:
 	for dir in $(SUBDIRS) ; do \
-		(cd $$dir; $(MAKE) -e $@) \
+		(cd $$dir; $(MAKE) $(MAKEVARS) -e $@) \
 	done;
 
 clean: 
 	$(RM) *~ \#* core
 	for dir in $(SUBDIRS) ; do \
-		(cd $$dir; $(MAKE) -e $@) \
+		(cd $$dir; $(MAKE) $(MAKEVARS) -e $@) \
 	done;
 
 distclean: 
 	for dir in $(SUBDIRS) ; do \
-		(cd $$dir; $(MAKE) -e $@) \
+		(cd $$dir; $(MAKE) $(MAKEVARS) -e $@) \
 	done;
 
 
-install: 
+install:
 	for dir in $(SUBDIRS) ; do \
-		(cd $$dir; $(MAKE) -e $@) \
+		(cd $$dir; $(MAKE) $(MAKEVARS) -e $@) \
 	done;
 
 tags:
