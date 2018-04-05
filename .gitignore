@@ -17,3 +17,6 @@ errs.*
 /tdt-driver/lib/libtdt.a
 /tdt-driver/utils/xbcomini
 /tdt-driver/utils/xbidchck
+iserver/tdtproc/iserver_test
+tdt-driver/utils/aptst
+tdt-driver/utils/xbsysid
