@@ -14,9 +14,9 @@ DATE :=	$(shell date)
 # -------------------------------------------------------------------------
 # Compiler flags
 #-------------------------------------------------------------------------
-CFLAGS  = 	-Wall -c -m32 -D_GNU_SOURCE -DCOMPILE_DATE="\"$(DATE)\"" \
+CFLAGS  = 	-Wall -c -m64 -D_GNU_SOURCE -DCOMPILE_DATE="\"$(DATE)\"" \
 				-DOSINFO="\"$(OSFULL)\"" $(CDEBUG) 
-LDFLAGS = $(LDDEBUG) -m32
+LDFLAGS = $(LDDEBUG) -m64
 
 # -------------------------------------------------------------------------
 # Includes
