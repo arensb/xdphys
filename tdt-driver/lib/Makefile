@@ -34,7 +34,7 @@ LIBNAME = libtdt.a
 # -------------------------------------------------------------
 # Install directories
 # -------------------------------------------------------------
-INSTALL_ROOT = /usr/local
+INSTALL_ROOT ?= /usr/local
 INSTALL_LIBDIR = $(INSTALL_ROOT)/lib
 
 # -------------------------------------------------------------
@@ -73,7 +73,8 @@ $(LIBNAME): $(OBJS)
 	$(RANLIB) libtdt.a
 
 install: $(LIBNAME)
-	$(INSTALL) -m 0555 $(LIBNAME) $(INSTALL_LIBDIR)
+	@mkdirhier $(INSTALL_LIBDIR)
+	$(INSTALL) -m 0555 $(LIBNAME) $(INSTALL_LIBDIR)/$(LIBNAME)
 
 clean:
 	@$(RM) -rf *.o $(LIBNAME) .libs

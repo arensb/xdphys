@@ -20,7 +20,7 @@ INSTALL		= install
 # -------------------------------------------------------------
 # Directories used by install
 # -------------------------------------------------------------
-INSTALL_ROOT = /usr/local
+INSTALL_ROOT ?= /usr/local
 INSTALL_BINDIR	= $(INSTALL_ROOT)/bin
 
 # -------------------------------------------------------------
@@ -74,6 +74,7 @@ xbsysid: xbsysid.o
 
 install: $(TARGETS)
 	@echo   Installing tdt util files to $(INSTALL_BINDIR)
+	mkdirhier $(INSTALL_BINDIR)
 	$(INSTALL) -d -m 0755  $(INSTALL_BINDIR)
 	for x in $(TARGETS); \
 			do\

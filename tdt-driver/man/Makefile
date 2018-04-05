@@ -31,10 +31,11 @@ clean:
 
 distclean: clean
 
-install: 
-	@$(INSTALL) -d -g lab -m 0755 $(INSTALL_MANDIR)/man1
+install:
+	@mkdirhier $(INSTALL_MANDIR)/man1
+	@$(INSTALL) -d -m 0755 $(INSTALL_MANDIR)/man1
 	@for x in $(MANFILES);\
 		do\
-			$(INSTALL) -g lab -m 0444 $$x $(INSTALL_MANDIR)/man1;\
+			$(INSTALL) -m 0444 $$x $(INSTALL_MANDIR)/man1;\
 			echo "           $$x.";\
 		done

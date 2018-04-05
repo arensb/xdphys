@@ -66,9 +66,11 @@ apld: apld.o
 
 install: $(TARGETS)
 	@echo   Installing AP2 EPROM object file to $(INSTALL_LIBDIR) ...
-	@$(INSTALL) -d -g lab -m 0755  $(INSTALL_BINDIR)
-	@$(INSTALL) -d -g lab -m 0755  $(INSTALL_LIBDIR)
-	@$(INSTALL) -g lab -m 0444  ap.obj $(INSTALL_LIBDIR)
+	@mkdirhier $(INSTALL_BINDIR)
+	@mkdirhier $(INSTALL_LIBDIR)
+	@$(INSTALL) -d -m 0755  $(INSTALL_BINDIR)
+	@$(INSTALL) -d -m 0755  $(INSTALL_LIBDIR)
+	@$(INSTALL) -m 0444  ap.obj $(INSTALL_LIBDIR)
 	@echo   Installing AP2 EPROM loader to $(INSTALL_BINDIR) ...
 	@for x in $(TARGETS); \
 			do\

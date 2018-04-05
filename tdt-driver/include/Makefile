@@ -32,10 +32,11 @@ clean:
 
 distclean: clean
 
-install: 
-	@$(INSTALL) -d -g lab -m 0755 $(INSTALL_INCDIR)
+install:
+	@mkdirhier $(INSTALL_INCDIR)
+	@$(INSTALL) -d -m 0755 $(INSTALL_INCDIR)
 	@for x in $(INCFILES);\
 		do\
-			$(INSTALL) -g lab -m 0444 $$x $(INSTALL_INCDIR);\
+			$(INSTALL) -m 0444 $$x $(INSTALL_INCDIR);\
 			echo "           $$x.";\
 		done

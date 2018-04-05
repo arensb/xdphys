@@ -80,6 +80,7 @@ depend:
 
 install:
 	@mkdirhier $(INSTALL_INCDIR)
+	@mkdirhier $(INSTALL_LIBDIR)
 	@for x in $(INCFILES);\
 		do\
 			$(INSTALL) $(STRIP) -m 0444 $$x $(INSTALL_INCDIR);\

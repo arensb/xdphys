@@ -26,7 +26,7 @@ INSTALL		= install
 # -------------------------------------------------------------
 # Directories used by install
 # -------------------------------------------------------------
-INSTALL_ROOT = /usr/local
+INSTALL_ROOT ?= /usr/local
 INSTALL_BINDIR	= $(INSTALL_ROOT)/bin
 
 # -------------------------------------------------------------
@@ -112,10 +112,11 @@ setpriority: setpriority.o
 
 install: $(TARGETS)
 	@echo   Installing tdt example files to $(INSTALL_BINDIR)
-	@$(INSTALL) -d -g lab -m 0755  $(INSTALL_BINDIR)
+	@mkdirhier $(INSTALL_BINDIR)
+	@$(INSTALL) -d -m 0755  $(INSTALL_BINDIR)
 	@for x in $(TARGETS); \
 			do\
-				$(INSTALL) -g lab -m 04555 $$x $(INSTALL_BINDIR);\
+				$(INSTALL) -m 04555 $$x $(INSTALL_BINDIR);\
 				echo "           $$x.";\
 			done
 
