@@ -86,7 +86,7 @@ install:
 			echo "  $$x.";\
 		done
 	@mkdirhier $(INSTALL_LIBDIR)
-	$(LIBTOOL) $(INSTALL) -m 0444 $(ARCHLIB) $(INSTALL_LIBDIR)
+	$(LIBTOOL) --mode=install $(INSTALL) -m 0444 $(ARCHLIB) $(INSTALL_LIBDIR)
 	(cd $(DAQ_PROG); $(MAKE) -e install)
 
 clean: 
@@ -134,7 +134,7 @@ ftp6:
 	cp $(LIBC6RPMDIR)/$(RPMFILE) $(FTPLIBC6RPMDIR)
 
 iserver.lo: is-tdt.c is-drpm.c iserver.c
-	$(LIBTOOL) $(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -c $< -o $@
+	$(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -c $< -o $@
 
 
 # ----------------------------------------------------------------------

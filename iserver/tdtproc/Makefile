@@ -50,7 +50,7 @@ init_test: init_test.o is-tdt.o
 	$(LD) $(LDFLAGS) -o $@ init_test.o is-tdt.o -lncurses -lm
 
 iserver_test: iserver_test.o 
-	$(LIBTOOL) $(LD) $(LDFLAGS) -o $@ iserver_test.o -lncurses -lm -L$(TDTLIB) -ltdt ../Linux/.libs/libiserver.a
+	$(LIBTOOL) --mode=link $(LD) $(LDFLAGS) -o $@ iserver_test.o -lncurses -lm -L$(TDTLIB) -ltdt ../Linux/.libs/libiserver.a
 
 # ------------------------------------------------------------------------
 # You have to do a "make perms" as root to run tdtproc from the bin directory:
