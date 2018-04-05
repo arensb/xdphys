@@ -16,7 +16,7 @@ INSTALL		= install
 # -------------------------------------------------------------
 # Install directories
 # -------------------------------------------------------------
-INSTALL_ROOT = /usr/local
+INSTALL_ROOT ?= /usr/local
 INSTALL_MANDIR = $(INSTALL_ROOT)/man
 
 MANFILES	=	apld.1 \

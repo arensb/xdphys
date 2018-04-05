@@ -16,7 +16,7 @@ INSTALL		= install
 # -------------------------------------------------------------
 # Install directories
 # -------------------------------------------------------------
-INSTALL_ROOT = /usr/local
+INSTALL_ROOT ?= /usr/local
 INSTALL_INCDIR = $(INSTALL_ROOT)/include/tdt
 
 INCFILES	=	apos.h \

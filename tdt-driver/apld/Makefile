@@ -25,7 +25,7 @@ LIBTOOL		= /usr/bin/libtool
 # -------------------------------------------------------------
 # Install directories
 # -------------------------------------------------------------
-INSTALL_ROOT = /usr/local
+INSTALL_ROOT ?= /usr/local
 INSTALL_BINDIR	= $(INSTALL_ROOT)/bin
 INSTALL_LIBDIR	= $(INSTALL_ROOT)/lib
 

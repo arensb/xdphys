@@ -47,7 +47,7 @@ SRPMFILE = $(DIR)-$(VERSION)-1.src.rpm
 # -------------------------------------------------------------
 # Install directories
 # -------------------------------------------------------------
-INSTALL_ROOT = /usr/local
+INSTALL_ROOT ?= /usr/local
 INSTALL_INCDIR = $(INSTALL_ROOT)/include/tdt
 INSTALL_LIBDIR = $(INSTALL_ROOT)/lib
 INSTALL_BINDIR = $(INSTALL_ROOT)/bin
