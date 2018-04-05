@@ -6,10 +6,14 @@ errs.*
 /tdt-driver/examples/dualplayrec
 /tdt-driver/examples/dualrec
 /tdt-driver/examples/dualtone
+/tdt-driver/examples/et1test
+/tdt-driver/examples/playrec
 /tdt-driver/examples/rectest
+/tdt-driver/examples/sd1test
+/tdt-driver/examples/setpriority
+/tdt-driver/examples/tg6att
 /tdt-driver/examples/tg6test
 /tdt-driver/examples/tonetest
 /tdt-driver/lib/libtdt.a
 /tdt-driver/utils/xbcomini
 /tdt-driver/utils/xbidchck
-
