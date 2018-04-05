@@ -38,12 +38,14 @@ MATEXT = glx
 # ------------------------------------------------------------
 # Include directories
 # ------------------------------------------------------------
-DAQINC      = -I$(TOP)/tdtproc -I/usr/local/include/tdt
+#DAQINC      = -I$(TOP)/tdtproc -I/usr/local/include/tdt
+DAQINC      =  -I$(TOP)/tdtproc -I$(TOP)/../tdt-driver/include
 
 # ------------------------------------------------------------
 # Library directories
 # ------------------------------------------------------------
-TDTLIB	     = /usr/local/lib
+#TDTLIB	     = /usr/local/lib
+TDTLIB = $(TOP)/../tdt-driver/lib
 NRLIB	     = /usr/local/lib
 NRVER	     = nr2_O3
 

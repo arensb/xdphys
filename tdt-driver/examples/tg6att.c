@@ -56,7 +56,7 @@
 #define REC2      4     	/* Setup logical name for rec buffer 2 */
 
 
-void main()
+int main()
 {
 	long  npts;
 	char  c;

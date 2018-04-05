@@ -1,4 +1,6 @@
 UNAME:=	$(shell uname)
+TOP:=	$(shell pwd)
+MAKEFLAGS += TOP="$(TOP)"
 include ./template.$(UNAME)
 
 # ---------------------------------------------------------------------
@@ -8,7 +10,6 @@ include ./template.$(UNAME)
 # Desc      :   Makefile for iserver library
 # ---------------------------------------------------------------------
 
-TOP:=	$(shell `pwd`)
 DIR:=	$(shell basename `pwd`)
 
 VERSION = 1.2.12
