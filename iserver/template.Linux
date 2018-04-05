@@ -26,7 +26,7 @@ STRIP		=
 # ------------------------------------------------------------
 # Install stuff
 # ------------------------------------------------------------
-INSTALL_ROOT = /usr/local
+INSTALL_ROOT ?= /usr/local
 INSTALL_INCDIR = $(INSTALL_ROOT)/include/iserver
 INSTALL_LIBDIR = $(INSTALL_ROOT)/lib
 INSTALL_BINDIR = $(INSTALL_ROOT)/bin
