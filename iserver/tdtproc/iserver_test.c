@@ -28,6 +28,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <values.h>
   
 #ifdef __GLIBC__
 #include <curses.h>
