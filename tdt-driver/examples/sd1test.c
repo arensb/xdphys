@@ -34,7 +34,7 @@
 #include <sys/wait.h>
 #include <sched.h>
 #include <unistd.h>
-#include <asm/system.h>
+/*#include <asm/system.h>*/
 #include "xbdrv.h"
 #include "apos.h"
 #ifdef USE_GRAPHS

@@ -39,7 +39,7 @@
 #include <sys/wait.h>
 #include <sched.h>
 #include <unistd.h>
-#include <asm/system.h>
+/*#include <asm/system.h>*/
 #include <assert.h>
 #include "xbdrv.h"
 #include "apos.h"
