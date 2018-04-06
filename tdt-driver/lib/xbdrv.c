@@ -49,7 +49,7 @@ static int get_valid_priority(int, int);
 static void lock_memory(void);
 static void unlock_memory(void);
 static qint PI2gettime_int( qint din, qint bitn);
-#endif XBDRV_SCHED
+#endif /* XBDRV_SCHED */
 
 /* ----------------------------------------------------------------------- */
 #else /* __linux__ */

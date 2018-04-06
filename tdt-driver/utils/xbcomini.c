@@ -2,7 +2,7 @@
 #include <math.h>
 #ifndef __linux__
 #include <bios.h>
-#endif __linux__
+#endif /* __linux__ */
 #include <stdio.h>
 #include <dos.h>
 #include <string.h>
