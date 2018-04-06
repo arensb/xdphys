@@ -1,8 +1,10 @@
-DAQPROG=/export/software/barnowl/bin/tdtproc; export DAQPROG
+# Set DAQ_ROOT to the directory where iserver and tdt-driver are installed.
+DAQ_ROOT="/usr/local"
+DAQPROG=${DAQ_ROOT}/bin/tdtproc; export DAQPROG
 DAQ_AP2_PORT=apb; export DAQ_AP2_PORT
-XDPHYSDIR=/export/software/barnowl/lib/xdphys; export XDPHYSDIR
-XAPPLRESDIR=/export/software/barnowl/lib/X11/app-defaults; export XAPPLRESDIR
-LD_LIBRARY_PATH=/export/software/barnowl/lib; export LD_LIBRARY_PATH
-PATH=/export/software/barnowl/bin/xdphys:/export/software/barnowl/bin:$PATH; export PATH
+XDPHYSDIR=${DAQ_ROOT}/lib/xdphys; export XDPHYSDIR
+XAPPLRESDIR=${DAQ_ROOT}/lib/X11/app-defaults; export XAPPLRESDIR
+LD_LIBRARY_PATH=${DAQ_ROOT}/lib; export LD_LIBRARY_PATH
+PATH=${DAQ_ROOT}/bin/xdphys:${DAQ_ROOT}/bin:$PATH; export PATH
 
 
