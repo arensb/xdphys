@@ -64,7 +64,7 @@ perms:
 install: $(TDTPROC) iserver_test
 	@$(INSTALL) -d -m 0755 $(INSTALL_BINDIR)
 	@echo -n "Installing tdtproc ... "
-	$(INSTALL) $(STRIP) -m 04555 $(TDTPROC) $(INSTALL_BINDIR)
+	$(INSTALL) $(STRIP) -o root -m 04555 $(TDTPROC) $(INSTALL_BINDIR)
 	@echo -n "Installing iserver_test ... "
 	$(INSTALL) $(STRIP) -m 0555 iserver_test $(INSTALL_BINDIR)
 	@echo "Done."
