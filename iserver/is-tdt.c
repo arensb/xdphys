@@ -1292,7 +1292,7 @@ static char *shm_request(
 			}
 		}
 		block = (void *) shmat(*id_ptr, (char *) 0, 0);
-		if ((int) block == -1) {
+		if (block == (void *) -1) {
 			perror("iserver: shm_request: shmat");
 			return (NULL);
 		}
