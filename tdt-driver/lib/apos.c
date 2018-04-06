@@ -274,7 +274,7 @@ qint apinit( qint devtype )
   if (s!=NULL)
   {
     strcpy(ss,s);
-    sscanf(ss,"%d",&af);
+    sscanf(ss,"%hd",&af);
     if(af<1) af = 1;
     if(af>1000) af = 1000;
   }
