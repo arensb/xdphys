@@ -58,7 +58,7 @@ INCLUDES	=	-I$(TDTINC)
 CFLAGS  = 	-Wall -c -D_GNU_SOURCE $(CDEBUG) $(OPTIMIZE) 
 
 
-all: xbidchck xbcomini
+all: $(TARGETS)
 
 aptst: aptst.o
 	$(LD) -o aptst $(LDFLAGS) -L$(TDTLIB) aptst.o -ltdt -lncurses
