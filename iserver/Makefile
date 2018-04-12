@@ -52,7 +52,7 @@ TARGETS = libiserver.la $(UNAME)/$(DAQ_PROG)
 #-------------------------------------------------------------------------
 # Targets
 #-------------------------------------------------------------------------
-all: do-it-all
+all:: do-it-all
 
 ifeq (.depend.$(UNAME),$(wildcard .depend.$(UNAME)))
 include .depend.$(UNAME)
@@ -60,6 +60,9 @@ do-it-all:	$(LIBNAME) $(UNAME)/$(DAQ_PROG)
 else
 do-it-all:	depend $(TARGETS)
 endif
+
+all::
+	(cd $(DAQ_PROG); $(MAKE) all)
 
 $(LIBNAME): $(ARCHLIB)
 .PHONY: $(LIBNAME)
