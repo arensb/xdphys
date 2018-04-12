@@ -61,16 +61,16 @@ CFLAGS  = 	-Wall -c -D_GNU_SOURCE $(CDEBUG) $(OPTIMIZE)
 all: $(TARGETS)
 
 aptst: aptst.o
-	$(LD) -o aptst $(LDFLAGS) -L$(TDTLIB) aptst.o -ltdt -lncurses
+	$(LD) -o aptst $(LDFLAGS) -L$(TDTLIB) -Wl,-rpath $(INSTALL_ROOT)/lib aptst.o -ltdt -lncurses
 
 xbidchck: xbidchck.o
-	$(LD) -g -o xbidchck $(LDFLAGS) -L$(TDTLIB) xbidchck.o -ltdt -lncurses
+	$(LD) -g -o xbidchck $(LDFLAGS) -L$(TDTLIB) -Wl,-rpath $(INSTALL_ROOT)/lib xbidchck.o -ltdt -lncurses
 
 xbcomini: xbcomini.o
-	$(LD) -g -o xbcomini $(LDFLAGS) -L$(TDTLIB) xbcomini.o  -ltdt
+	$(LD) -g -o xbcomini $(LDFLAGS) -L$(TDTLIB) -Wl,-rpath $(INSTALL_ROOT)/lib xbcomini.o  -ltdt
 
 xbsysid: xbsysid.o
-	$(LD) -o xbsysid $(LDFLAGS) -L$(TDTLIB) xbsysid.o -ltdt -lncurses
+	$(LD) -o xbsysid $(LDFLAGS) -L$(TDTLIB) -Wl,-rpath $(INSTALL_ROOT)/lib xbsysid.o -ltdt -lncurses
 
 install: $(TARGETS)
 	@echo   Installing tdt util files to $(INSTALL_BINDIR)
