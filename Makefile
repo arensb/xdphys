@@ -1,4 +1,4 @@
-SUBDIRS = iserver tdt-driver
+SUBDIRS = tdt-driver iserver
 
 INSTALL_ROOT =	/tmp/barnowl3
 
