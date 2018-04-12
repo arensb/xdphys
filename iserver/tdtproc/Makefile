@@ -41,10 +41,10 @@ test: $(TEST_TARGETS)
 
 
 $(TDTPROC): tdtproc.o tdtproc.h 
-	$(LD) $(LDFLAGS) -o $@ tdtproc.o -L$(TDTLIB) -ltdt -lm
+	$(LD) $(LDFLAGS) -o $@ tdtproc.o -L$(TDTLIB) -Wl,-rpath $(INSTALL_ROOT)/lib -ltdt -lm
 
 tdt_client: tdt_client.o 
-	$(LD) $(LDFLAGS) -o $@ tdt_client.o -L$(TDTLIB) -ltdt -lncurses -lm
+	$(LD) $(LDFLAGS) -o $@ tdt_client.o -L$(TDTLIB) -Wl,-rpath $(INSTALL_ROOT)/lib -ltdt -lncurses -lm
 
 init_test: init_test.o is-tdt.o 
 	$(LD) $(LDFLAGS) -o $@ init_test.o is-tdt.o -lncurses -lm

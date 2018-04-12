@@ -73,34 +73,34 @@ CFLAGS  = 	-Wall -c -D_GNU_SOURCE $(CDEBUG) $(OPTIMIZE)
 all: $(TARGETS)
 
 tonetest: tonetest.o
-	$(LD) -o tonetest $(LDFLAGS) -L$(TDTLIB) tonetest.o  -ltdt -lncurses
+	$(LD) -o tonetest $(LDFLAGS) -L$(TDTLIB) -Wl,-rpath $(INSTALL_ROOT)/lib tonetest.o  -ltdt -lncurses
 
 dualtone: dualtone.o
-	$(LD) -o dualtone $(LDFLAGS) -L$(TDTLIB) dualtone.o -ltdt -lncurses
+	$(LD) -o dualtone $(LDFLAGS) -L$(TDTLIB) -Wl,-rpath $(INSTALL_ROOT)/lib dualtone.o -ltdt -lncurses
 
 rectest: rectest.o
-	$(LD) -o rectest $(LDFLAGS) -L$(TDTLIB) rectest.o -ltdt -lncurses
+	$(LD) -o rectest $(LDFLAGS) -L$(TDTLIB) -Wl,-rpath $(INSTALL_ROOT)/lib rectest.o -ltdt -lncurses
 
 dualrec: dualrec.o
-	$(LD) -o dualrec $(LDFLAGS) -L$(TDTLIB) dualrec.o -ltdt -lncurses
+	$(LD) -o dualrec $(LDFLAGS) -L$(TDTLIB) -Wl,-rpath $(INSTALL_ROOT)/lib dualrec.o -ltdt -lncurses
 
 playrec: playrec.o
-	$(LD) -o playrec $(LDFLAGS) -L$(TDTLIB) playrec.o -ltdt -lncurses
+	$(LD) -o playrec $(LDFLAGS) -L$(TDTLIB) -Wl,-rpath $(INSTALL_ROOT)/lib playrec.o -ltdt -lncurses
 
 dualplayrec: dualplayrec.o
-	$(LD) -o dualplayrec $(LDFLAGS) -L$(TDTLIB) dualplayrec.o -ltdt -lncurses
+	$(LD) -o dualplayrec $(LDFLAGS) -L$(TDTLIB) -Wl,-rpath $(INSTALL_ROOT)/lib dualplayrec.o -ltdt -lncurses
 
 tg6test: tg6test.o
-	$(LD) -o tg6test $(LDFLAGS) -L$(TDTLIB) tg6test.o -ltdt -lncurses
+	$(LD) -o tg6test $(LDFLAGS) -L$(TDTLIB) -Wl,-rpath $(INSTALL_ROOT)/lib tg6test.o -ltdt -lncurses
 
 tg6att: tg6att.o
-	$(LD) -o tg6att $(LDFLAGS) -L$(TDTLIB) tg6att.o -ltdt -lncurses
+	$(LD) -o tg6att $(LDFLAGS) -L$(TDTLIB) -Wl,-rpath $(INSTALL_ROOT)/lib tg6att.o -ltdt -lncurses
 
 sd1test: sd1test.o
-	$(LD) -o sd1test $(LDFLAGS) -L$(TDTLIB) sd1test.o -ltdt -lncurses
+	$(LD) -o sd1test $(LDFLAGS) -L$(TDTLIB) -Wl,-rpath $(INSTALL_ROOT)/lib sd1test.o -ltdt -lncurses
 
 et1test: et1test.o
-	$(LD) -o et1test $(LDFLAGS) -L$(TDTLIB) et1test.o  -ltdt -lncurses
+	$(LD) -o et1test $(LDFLAGS) -L$(TDTLIB) -Wl,-rpath $(INSTALL_ROOT)/lib et1test.o  -ltdt -lncurses
 
 # Real-time system calls test programs
 rt-demo: rt-demo.o
