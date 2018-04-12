@@ -1,6 +1,7 @@
-SUBDIRS = iserver tdt-driver
+# tdt-driver should be built before iserver: it has libraries.
+SUBDIRS = tdt-driver iserver
 
-INSTALL_ROOT =	/tmp/barnowl3
+INSTALL_ROOT =	/export/software/barnowl2
 
 MAKEVARS = INSTALL_ROOT="$(INSTALL_ROOT)"
 
