@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <dos.h>
 #include <string.h>
+#include <stdint.h>
 
 
 #define   BLOCKSIZE  30000
@@ -14,9 +15,9 @@ typedef struct
 {
   unsigned short f_magic;
   unsigned short f_nscs;
-  long           f_timdat;
-  long           f_symptr;
-  long           f_nsyms;
+  uint32_t       f_timdat;
+  uint32_t       f_symptr;
+  uint32_t       f_nsyms;
   unsigned short f_opthrd;
   unsigned short f_flags;
 } filehdr;
@@ -24,12 +25,12 @@ typedef struct
 typedef struct
 {
   char           s_name[8];
-  long           s_paddr;
-  long           s_vaddr;
-  long           s_size;
-  long           s_scnptr;
-  long           s_relptr;
-  long           s_lnnoptr;
+  uint32_t       s_paddr;
+  uint32_t       s_vaddr;
+  uint32_t       s_size;
+  uint32_t       s_scnptr;
+  uint32_t       s_relptr;
+  uint32_t       s_lnnoptr;
   unsigned short s_nreloc;
   unsigned short s_nlnno;
   long           s_flags;
@@ -145,6 +146,7 @@ void main(int argc, char *argv[], char *env[])
         exit(1);
       }
 
+      /* Read file header */
       fread(&fh,sizeof(filehdr),1,fff);
       fread(sh,sizeof(scnhdr),fh.f_nscs,fff);
 
