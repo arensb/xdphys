@@ -63,7 +63,7 @@ void dataout(unsigned short z[], unsigned ioport, unsigned count)
   }
 }
 
-void main(int argc, char *argv[], char *env[])
+int main(int argc, char *argv[], char *env[])
 {
   char buf[255];
   printf("\n Usage: APLD {APa} {APb}\n\n");
@@ -197,4 +197,5 @@ void main(int argc, char *argv[], char *env[])
     }
   }
   printf("\n\n");
+  exit(0);
 }
